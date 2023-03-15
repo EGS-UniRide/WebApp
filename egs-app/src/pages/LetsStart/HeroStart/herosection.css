@@ -1,0 +1,58 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@800&display=swap");
+
+.home {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: left;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  }
+  
+  .headerContainer {
+    width: 40%;
+    margin-top: -50px;
+    margin-left: 50px;
+  }
+
+ 
+  
+  .headerContainer h1 {
+    font-family: Montserrat, sans-serif;
+    justify-content: center;
+    align-items: center;
+    margin-left: 140px;
+    margin-top: 150px;
+    font-size: 5ch;
+    color: black;
+  }
+  
+  .headerContainer p {
+    font-family: Montserrat, sans-serif;
+    margin-top: 20px;
+    margin-left: 140px;
+    padding: 0;
+    
+    color: black;
+  }
+
+  .p.a {
+    font-family: Montserrat, sans-serif;
+    margin-top: 20px;
+    margin-left: 140px;
+    padding: 0;
+    white-space: normal;
+    color: black;
+  }
+
+  .buttom{
+      margin-left: 140px;
+      margin-top: 30px;
+  }
+
+  .column {
+    margin-left: 200px;
+}

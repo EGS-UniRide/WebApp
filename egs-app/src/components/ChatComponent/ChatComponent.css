@@ -1,0 +1,57 @@
+.chat {
+    text-align: center;
+    max-width: 100vh;
+    margin: 0 auto;
+}
+
+.chat {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 50vh;
+}
+
+.chat-wrapper {
+    height: 50vh;
+    overflow-y: scroll;
+    gap: 15px;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    box-shadow: 0 1px 2px #0003;
+    background-color: white;
+    max-width: 350px;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.message-body {
+    max-width: 500px;
+    margin-bottom: 12px;
+    line-height: 24px;
+    padding: 10px 20px;
+    border-radius: 25px;
+    position: relative;
+    color: white;
+    text-align: center;
+}
+
+.message {
+    display: flex;
+    align-items: center;
+}
+
+.sent {
+    flex-direction: row-reverse;
+}
+
+.sent p {
+    color: white;
+    background: #0b93f6;
+    align-self: flex-end;
+}
+
+.received p {
+    background: #e5e5ea;
+    color: black;
+}

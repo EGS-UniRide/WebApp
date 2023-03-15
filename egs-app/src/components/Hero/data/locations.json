@@ -1,0 +1,40 @@
+{
+    "type": "features",
+    "crs": {
+      "type": "name",
+      "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" }
+    },
+    "features": [
+      {
+        "type": "Feature",
+        "properties": {
+            "PLACE_ID": 1,
+            "LOCAL": "Departamento de Engenharia Civil",
+            "PERSON": "User",
+            "LOCAL_FR": "Universidade de Aveiro",
+            "ADDRESS": "3810-193 Aveiro",
+            "TYPE": "Mural"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [40.629594, -8.657450]
+        }
+    },
+    {
+        "type": "Feature",
+        "properties": {
+            "PLACE_ID": 2,
+            "LOCAL": "Departamento de Engenharia Informática",
+            "PERSON": "Driver",
+            "LOCAL_FR": "Universidade de Aveiro",
+            "ADDRESS": "3810-193 Aveiro",
+            "TYPE": "Mural"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [40.633124, -8.659202]
+        }
+    }
+
+    ]
+  }

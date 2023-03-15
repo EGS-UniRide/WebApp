@@ -1,0 +1,21 @@
+.flex-row-center{
+    margin-top: 500px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 15;
+}
+
+.success{
+    margin-right: 43%;
+    margin-top: 570px;
+    font-size: 18px;
+    font-family: Montserrat, sans-serif;
+    font-weight: 400;
+    color: rgb(38, 38, 38);
+    text-align: center;
+    word-wrap: break-word;
+    z-index: 15;
+
+}

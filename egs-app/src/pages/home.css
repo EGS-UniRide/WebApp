@@ -1,0 +1,12 @@
+.botton {
+    background-color: #4CAF50; /* Green background */
+    border:none; /* Remove button border */
+    color: white; /* Text color */
+    padding: 15px 32px; /* Add padding */
+    text-align: center; /* Center text */
+    text-decoration: none; /* Remove underline */
+    display: inline-block; /* Display as inline-block */
+    font-size: 16px; /* Set font size */
+    margin: 10px 2px; /* Add margin */
+    cursor: pointer; /* Add cursor pointer */
+}

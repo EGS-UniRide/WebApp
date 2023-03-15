@@ -1,0 +1,42 @@
+.popup {
+    position: absolute;
+    background-color: #f9aa5c;
+    color: white;
+    text-align: right;
+
+
+    display: flex;
+    flex-direction: column; /* display items vertically */
+    gap: 20px;
+    left: 10%;
+    width: 80%; /* take up 60% of the page */
+    height: 30%;
+    margin: 50px auto 0; /* center the car list horizontally and add 50px top margin */
+}
+
+.popup-content {
+    color: white;
+    text-align: right;
+    font-size: 60px;
+    font-weight: bold;
+    margin-bottom: 16px;
+}
+
+.popup-inner {
+    position: relative;
+    left: 50px;
+    padding: 32px;
+    width: 100%;
+    max-width: 640px;
+    background-color: white;
+}
+
+.popup-inner .close-btn {
+    right: 200px;
+}
+
+.close-btn {
+  position: absolute;
+  top: 0;
+  left: 96.5%;
+}
