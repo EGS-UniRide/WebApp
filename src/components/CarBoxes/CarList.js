@@ -13,8 +13,7 @@ function CarList({ cars }) {
             imageSrc={car.imageSrc}
             description={car.matrícula}
             description1={car.carModel}
-            description2={car.localRecolha}
-            description3={car.localDestino}
+            description2={car.localAtual}
             onChooseTrip={() => console.log('Escolher Viagem')}
           />
         ))}

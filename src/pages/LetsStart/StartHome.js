@@ -7,7 +7,7 @@ const StartHome = () => {
   
     return (
       <>
-      <NavBar/>
+      {/* <NavBar/> */}
       <Herosection/>
       </>
     )

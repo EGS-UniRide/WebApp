@@ -10,3 +10,14 @@
     margin: 10px 2px; /* Add margin */
     cursor: pointer; /* Add cursor pointer */
 }
+
+.leaflet-container {
+    width: 100%;
+    height: 65vh;
+  }
+    
+  .map-container {
+    height: 60vh;
+    overflow: auto;
+  }
+  

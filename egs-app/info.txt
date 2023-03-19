@@ -1,9 +1,0 @@
-/src/components/SuccessTxt/Logo.js:
-- Informação sobre o logo e título da aplicação:  UA UniDrive
-
-/src/pages/components/Logo.css:
-- tudo sobre as cores e tamanhos em UA UniDrive
-
-/src/pages/LetStart/NavBAr.js:
-- possui as informações(classes) para chamar a barra de cima e toda a informação.
-

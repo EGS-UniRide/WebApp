@@ -1,0 +1,74 @@
+{
+    "drivers": [
+        {
+            "id": 1,
+            "title": "João Silva",
+            "imageSrc": "https://cdn-icons-png.flaticon.com/512/5231/5231020.png",
+            "matrícula": "40-RF-61",
+            "carModel": "Fiat Pulse"
+        },
+        {
+            "id": 2,
+            "title": "Ines Moreira",
+            "imageSrc": "https://cdn-icons-png.flaticon.com/512/5231/5231019.png",
+            "matrícula": "50-AA-78",
+            "carModel": "Seat Ibiza FR"
+        },
+        {
+            "id": 3,
+            "title": "Carlos Santos",
+            "imageSrc": "https://cdn-icons-png.flaticon.com/512/5231/5231020.png",
+            "matrícula": "32-XU-02",
+            "carModel": "Renault Megane"
+        },
+        {
+            "id": 4,
+            "title": "Marta Dias",
+            "imageSrc": "https://cdn-icons-png.flaticon.com/512/5231/5231019.png",
+            "matrícula": "10-AR-23",
+            "carModel": "Toyota Corolla"
+        },
+        {
+            "id": 5,
+            "title": "Paulo Mendonça",
+            "imageSrc": "https://cdn-icons-png.flaticon.com/512/5231/5231020.png",
+            "matrícula": "91-SE-58",
+            "carModel": "Nissan Leaf"
+        },
+        {
+            "id": 6,
+            "title": "André Gonçalves",
+            "imageSrc": "https://cdn-icons-png.flaticon.com/512/5231/5231020.png",
+            "matrícula": "12-HP-04",
+            "carModel": "Audi A1"
+        },
+        {
+            "id": 7,
+            "title": "Maria Costa",
+            "imageSrc": "https://cdn-icons-png.flaticon.com/512/5231/5231019.png",
+            "matrícula": "19-TI-33",
+            "carModel": "Volvo V40"
+        },
+        {
+            "id": 8,
+            "title": "Carla Tavares",
+            "imageSrc": "https://cdn-icons-png.flaticon.com/512/5231/5231019.png",
+            "matrícula": "88-NJ-02",
+            "carModel": "Mercedes-Benz A 45"
+        },
+        {
+            "id": 9,
+            "title": "Rafael Martins",
+            "imageSrc": "https://cdn-icons-png.flaticon.com/512/5231/5231020.png",
+            "matrícula": "22-QO-43",
+            "carModel": "Opel Astra"
+        },
+        {
+            "id": 10,
+            "title": "Sara Domingues",
+            "imageSrc": "https://cdn-icons-png.flaticon.com/512/5231/5231019.png",
+            "matrícula": "10-FF-77",
+            "carModel": "Volkswagen Golf"
+        }
+    ]
+}
