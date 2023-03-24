@@ -11,6 +11,7 @@ import CarList from "../components/CarBoxes/CarList.js"
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import { Container, Row } from "reactstrap";
+import swal from 'sweetalert';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 class Home extends Component {
@@ -77,9 +78,66 @@ class Home extends Component {
 		})
 	}
 
-	//TODO
+	// To debug the animal checkbox question (yes)
+	changeSimAnimal = (event) => {
+		if (event.target.checked === true && document.getElementById("nao-animal").checked === true) {
+			swal("Operação não permitida!", "Apenas é possível selecionar uma resposta!", "error");
+			event.target.checked = false;
+		}
+	}
+
+	// To debug the animal checkbox question (no)
+	changeNaoAnimal = (event) => {
+		if (event.target.checked === true && document.getElementById("sim-animal").checked === true) {
+			swal("Operação não permitida!", "Apenas é possível selecionar uma resposta!", "error");
+			event.target.checked = false;
+		}
+	}
+
+	// To debug the child checkbox question (yes)
+	changeSimCrianca = (event) => {
+		if (event.target.checked === true && document.getElementById("nao-crianca").checked === true) {
+			swal("Operação não permitida!", "Apenas é possível selecionar uma resposta!", "error");
+			event.target.checked = false;
+		}
+	}
+
+	// To debug the child checkbox question (no)
+	changeNaoCrianca = (event) => {
+		if (event.target.checked === true && document.getElementById("sim-crianca").checked === true) {
+			swal("Operação não permitida!", "Apenas é possível selecionar uma resposta!", "error");
+			event.target.checked = false;
+		}
+	}
+
+	// To debug the lugage checkbox question (yes)
+	changeSimBagagem = (event) => {
+		if (event.target.checked === true && document.getElementById("nao-bagagem").checked === true) {
+			swal("Operação não permitida!", "Apenas é possível selecionar uma resposta!", "error");
+			event.target.checked = false;
+		}
+	}
+
+	// To debug the lugage checkbox question (no)
+	changeNaoBagagem = (event) => {
+		if (event.target.checked === true && document.getElementById("sim-bagagem").checked === true) {
+			swal("Operação não permitida!", "Apenas é possível selecionar uma resposta!", "error");
+			event.target.checked = false;
+		}
+	}
+
+	// TODO
 	startTravel = () => {
 		console.log("started travel...")
+
+		// Call the CloserGeographicallyPointsAPI
+		// Get the return values
+		// ...
+
+		// Call the MatchingAPI (Need to add the driver's questions answers to the drivers.json file)
+		// Get the return value/(s)
+		// If the result is not unique, select one randomly
+		// ...
 	}
 
 	render() {
@@ -123,33 +181,36 @@ class Home extends Component {
 
 					<Modal.Body style={{ overflow: 'hidden' }}>
 						<Container fluid>
-							<Row style={{marginLeft: '4%'}}>
+							<Row style={{ marginLeft: '4%' }}>
 								<p style={{ marginLeft: '3.4%', marginBottom: '0rem', marginTop: '1%', fontSize: '18px' }}>
 									<b>P1:</b> Transporta animais consigo?
 								</p>
 								<div style={{ marginLeft: '3.4%', marginBottom: '5%' }}>
-									<input type="checkbox" value="Sim" /> Sim
-									<input type="checkbox" value="Não" style={{ marginLeft: '5%' }} /> Não
+									<input type="checkbox" value="Sim" id="sim-animal" onChange={this.changeSimAnimal} /> Sim
+									<input type="checkbox" value="Não" id="nao-animal" onChange={this.changeNaoAnimal}
+										style={{ marginLeft: '5%' }} /> Não
 								</div>
 							</Row>
 
-							<Row style={{marginLeft: '4%'}}>
-								<p style={{ marginLeft: '3.4%', marginBottom: '0rem',fontSize: '18px' }}>
+							<Row style={{ marginLeft: '4%' }}>
+								<p style={{ marginLeft: '3.4%', marginBottom: '0rem', fontSize: '18px' }}>
 									<b>P2:</b> Está acompanhado de uma criança?
 								</p>
 								<div style={{ marginLeft: '3.4%', marginBottom: '5%' }}>
-									<input type="checkbox" value="Sim" /> Sim
-									<input type="checkbox" value="Não" style={{ marginLeft: '5%' }} /> Não
+									<input type="checkbox" value="Sim" id="sim-crianca" onChange={this.changeSimCrianca} /> Sim
+									<input type="checkbox" value="Não" id="nao-crianca" onChange={this.changeNaoCrianca}
+										style={{ marginLeft: '5%' }} /> Não
 								</div>
 							</Row>
 
-							<Row style={{marginLeft: '4%'}}>
+							<Row style={{ marginLeft: '4%' }}>
 								<p style={{ marginLeft: '3.4%', marginBottom: '0rem', fontSize: '18px' }}>
 									<b>P3:</b> Leva alguma bagagem de mão?
 								</p>
 								<div style={{ marginLeft: '3.4%' }}>
-									<input type="checkbox" value="Sim" /> Sim
-									<input type="checkbox" value="Não" style={{ marginLeft: '5%' }} /> Não
+									<input type="checkbox" value="Sim" id="sim-bagagem" onChange={this.changeSimBagagem} /> Sim
+									<input type="checkbox" value="Não" id="nao-bagagem" onChange={this.changeNaoBagagem}
+										style={{ marginLeft: '5%' }} /> Não
 								</div>
 							</Row>
 						</Container>
