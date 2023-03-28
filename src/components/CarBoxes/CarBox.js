@@ -29,7 +29,7 @@ function CarBox({ imageSrc, title, description, description1, description2, desc
   return (
     <div className="car-box">
       <div className="car-image">
-        <img src={imageSrc} />
+        <img src={imageSrc} onClick = {redirectProfile} />
       </div>
       <div className="car-info">
         <h2>{title}</h2>
@@ -52,3 +52,7 @@ function CarBox({ imageSrc, title, description, description1, description2, desc
     </div>
   );
 } export default CarBox;
+
+function redirectProfile() {
+  console.log("redirect");
+}

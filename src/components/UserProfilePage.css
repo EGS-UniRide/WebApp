@@ -15,10 +15,21 @@
     height: 800px;
 }
 
-.card {
+.card_user {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     width: 500px;
     height: 760px;
+    transition: 0.3s;
+    border: 2px solid #e7e7e7;
+    border-radius: 4px;
+    padding: 2rem;
+    background-color: #ffffff;
+}
+
+.card_chat {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    width: 500px;
+    height: 500px;
     transition: 0.3s;
     border: 2px solid #e7e7e7;
     border-radius: 4px;

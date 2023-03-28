@@ -6,7 +6,6 @@
 }
 
 .icon{
-  margin-top:0;
   left: auto;
 }
 li {
@@ -34,17 +33,24 @@ a {
 .nav__menu {
   display: flex;
   align-items: left;
-  justify-content: space-around;
+  justify-content: left;
   color: #ffb266;
+  margin-left: auto; /* Add this line */
 }
 
 .nav__item{
   cursor: pointer;
   color: #000;
+  margin-right: 80px; /* Adjust this value */
 }
+
 .nav__item2{
   cursor: pointer;
   color: #000;
+}
+
+.notification {
+  cursor: pointer;
 }
 
 .nav__link{
@@ -61,6 +67,5 @@ a {
 }
 
 .notification-icon{
-  cursor: pointer;
   color: #cc6600;
 }

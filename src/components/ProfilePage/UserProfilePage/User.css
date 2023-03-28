@@ -1,0 +1,118 @@
+.profile {
+    background-color: #4CAF50;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 3rem;
+    border-radius: 30px;
+    margin-top: 50px;
+    width: 700px !important;
+    height: 800px;
+    margin: 0 auto;
+    margin-top: 20px;
+    
+}
+
+.card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    width: 500px;
+    height: 760px;
+    transition: 0.3s;
+    border: 2px solid #e7e7e7;
+    border-radius: 4px;
+    padding: 2rem;
+    background-color: #ffffff;
+    margin: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    width: 100%;
+    padding: 2px 16px;
+    text-align: center;
+    padding-bottom: 20px;
+}
+
+#avatarImage {
+    border-radius: 5px 5px 0 0;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+    padding: 30px;
+}
+
+.alignleft {
+    float: left;
+}
+
+.alignright {
+    float: right;
+}
+
+.buttonStyle {
+    background-color: black;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+}
+
+.buttonStyle2 {
+    background-color: white;
+    border: none;
+    color: black;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+}
+
+/* This container is needed to position the front and back side */
+.flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+}
+
+/* Do an horizontal flip when you move the mouse over the flip box container */
+/* .card:hover .flip-card-inner {
+    transform: rotateY(180deg);
+} */
+
+.animation {
+    transform: rotateY(180deg);
+}
+
+/* Position the front and back side */
+.flip-card-front,
+.flip-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+}
+
+/* Style the front side (fallback if image is missing) */
+.flip-card-front {
+    background-color: white;
+    color: black;
+}
+
+/* Style the back side */
+.flip-card-back {
+    background-color: #327535;
+    color: white;
+    transform: rotateY(180deg);
+}

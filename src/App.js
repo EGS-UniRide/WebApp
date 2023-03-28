@@ -6,6 +6,8 @@ import HeroLogin from "./components/HeroLogSign/HeroLogin";
 import UserProfile from "./pages/UserProfile";
 import React from "react";
 import Layout from "./pages/Layout";
+import OtherProfilePages from "./pages/OtherProfilePages";
+import TripHistory from "./pages/TripHistory";
 
 export default function App() {
 	return (
@@ -16,6 +18,8 @@ export default function App() {
 					<Route path="/home" exact element={<Home />} />
 					<Route path="/userProfile" exact element={<UserProfile />} />
 					<Route path="*" element={<HeroLogin />} />
+					<Route path="/othersProfile" exact element={<OtherProfilePages />}></Route>
+					<Route path="/history" exact element={<TripHistory />}></Route>
 				</Route>
 			</Routes>
 		</BrowserRouter>

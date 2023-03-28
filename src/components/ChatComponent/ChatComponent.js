@@ -4,7 +4,7 @@ import Input from "../Input";
 import Button from "../Button";
 import Logo from "../Logo";
 import { Link } from "react-router-dom";
-import * as C from "../AddClinicFile/styles";
+import * as C from "../AddUser/styles";
 
 const ChatComponent = () => {
   const [body, setBody] = useState("");

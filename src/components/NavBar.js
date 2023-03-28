@@ -14,9 +14,9 @@ export default function NavBar({ setShow, size }) {
 				</Link>
 			</div>
 
-			<ul className="nav__menu">
+			<div className="nav__menu">
 				<li className="nav__item">
-					<a href="/tripHistory" className="nav__link">
+					<a href="/history" className="nav__link">
 						Histórico de viagens
 					</a>
 				</li>
@@ -30,7 +30,7 @@ export default function NavBar({ setShow, size }) {
 						<FontAwesomeIcon icon={faBell} size="lg" color="red" className="notification-icon" />
 					</a>
 				</li>
-			</ul>
+			</div>
 
 		</nav>
 	);
