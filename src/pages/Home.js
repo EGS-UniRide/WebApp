@@ -7,12 +7,13 @@ import { Icon } from "leaflet";
 import randomLocation from 'random-location'
 import axios from 'axios';
 import data from "./data/drivers.json"
-import CarList from "../components/CarBoxes/CarList.js"
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import { Container, Row } from "reactstrap";
 import swal from 'sweetalert';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import '../components/CarBoxes/cars.css';
+import '../components/CarBoxes/cars.js';
 
 class Home extends Component {
 	constructor(props) {
@@ -128,16 +129,39 @@ class Home extends Component {
 
 	// TODO
 	startTravel = () => {
-		console.log("started travel...")
+		var payload = { "points": [] }
 
-		// Call the CloserGeographicallyPointsAPI
-		// Get the return values
-		// ...
+		// Create the paylod to the API call
+		data.drivers.forEach((driver, index) => {
+			var dict = {}
+			dict["latitude"] = driver.latitude
+			dict["longitude"] = driver.longitude
+
+			payload["points"].push(dict)
+		})
+
+		axios.post("http://localhost:8040/points/v1/inside-points?latitude=" + this.state.passenger[0] + "&longitude="
+			+ this.state.passenger[1] + "&range=1", payload
+		)
+			.then((response) => {
+				console.log(response.data)
+			})
+
 
 		// Call the MatchingAPI (Need to add the driver's questions answers to the drivers.json file)
 		// Get the return value/(s)
 		// If the result is not unique, select one randomly
 		// ...
+	}
+
+	// To redirect to the driver profile
+	redirectDriverProfile = (id) => {
+		this.props.navigate({
+			pathname: "/othersProfile",
+			search: createSearchParams({
+				id: id
+			}).toString()
+		})
 	}
 
 	render() {
@@ -165,6 +189,20 @@ class Home extends Component {
 
 		if (passenger[0] !== undefined) {
 			center = passenger
+		}
+
+		const button1 = {
+			alignItems: 'center',
+			display: "table",
+			paddingVertical: 12,
+			width: 200,
+			paddingHorizontal: 14,
+			borderRadius: 10,
+			marginRight: 15,
+			backgroundColor: 'black',
+			float: 'left',
+			border: 'none',
+			marginRight: '0px'
 		}
 
 		return (
@@ -265,7 +303,28 @@ class Home extends Component {
 						</Button>
 					</div>
 
-					<CarList cars={data.drivers} />
+					<div className="car-list">
+						{data.drivers.map((car) => (
+							<div className="car-box">
+								<div className="car-image">
+									<img id="profilePic" src={car.imageSrc} onClick={() => this.redirectDriverProfile(car.id)} />
+								</div>
+								<div className="car-info">
+									<h2>{car.title}</h2>
+									<p>{car.matrícula}</p>
+									<p1>{car.carModel}</p1>
+								</div>
+								<div className="car-local">
+									<p> <strong className='bold'>Local de Partida:</strong> {car.localAtual}</p>
+									<div style={{ display: 'flex', flexDirection: 'row', justifyContent: "flex-end" }}>
+										<Button style={button1} onClick={() => this.redirectDriverProfile(car.id)}>
+											Visitar Perfil
+										</Button>
+									</div>
+								</div>
+							</div>
+						))}
+					</div>
 				</Container>
 			</div>
 		)

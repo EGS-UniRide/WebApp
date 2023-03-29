@@ -18,7 +18,7 @@ export default function App() {
 					<Route path="/home" exact element={<Home />} />
 					<Route path="/userProfile" exact element={<UserProfile />} />
 					<Route path="*" element={<HeroLogin />} />
-					<Route path="/othersProfile" exact element={<OtherProfilePages />}></Route>
+					<Route path="/othersProfile/*" element={<OtherProfilePages />} />
 					<Route path="/history" exact element={<TripHistory />}></Route>
 				</Route>
 			</Routes>
