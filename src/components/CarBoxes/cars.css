@@ -1,9 +1,12 @@
 .car-list {
   display: flex;
-  flex-direction: column; /* display items vertically */
+  flex-direction: column;
+  /* display items vertically */
   gap: 20px;
-  width: 65%; /* take up 60% of the page */
-  margin: 30px auto 0; /* center the car list horizontally and add 50px top margin */
+  width: 65%;
+  /* take up 60% of the page */
+  margin: 30px auto 0;
+  /* center the car list horizontally and add 50px top margin */
   margin-top: 1%;
 }
 
@@ -49,13 +52,13 @@
 .car-info p1 {
   font-family: Times, Times New Roman, serif;
   font-weight: lighter;
-  color:#202020;
+  color: #202020;
 }
 
 .car-local p {
   font-family: Times, Times New Roman, serif;
   font-weight: lighter;
-  color:#202020;
+  color: #202020;
 }
 
 .bold {
@@ -64,9 +67,11 @@
   font-size: larger;
 }
 
-.buttom{
+.buttom {
   margin-left: 140px;
   margin-top: 30px;
 }
 
-
+#profilePic:hover {
+  cursor: pointer;
+}

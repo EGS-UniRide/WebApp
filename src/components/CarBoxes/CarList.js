@@ -15,6 +15,7 @@ function CarList({ cars }) {
             description1={car.carModel}
             description2={car.localAtual}
             onChooseTrip={() => console.log('Escolher Viagem')}
+            driverID={car.id}
           />
         ))}
       </div>

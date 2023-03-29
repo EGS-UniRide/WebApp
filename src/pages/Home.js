@@ -13,6 +13,8 @@ import Modal from 'react-bootstrap/Modal';
 import { Container, Row } from "reactstrap";
 import swal from 'sweetalert';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import '../components/CarBoxes/cars.css';
+import '../components/CarBoxes/cars.js';
 
 class Home extends Component {
 	constructor(props) {
@@ -140,6 +142,16 @@ class Home extends Component {
 		// ...
 	}
 
+	// To redirect to the driver profile
+	redirectDriverProfile = (id) => {
+		this.props.navigate({
+			pathname: "/othersProfile",
+			search: createSearchParams({
+				id: id
+			}).toString()
+		})
+	}
+
 	render() {
 		var show = this.state.show
 		var passenger = this.state.passenger
@@ -165,6 +177,20 @@ class Home extends Component {
 
 		if (passenger[0] !== undefined) {
 			center = passenger
+		}
+
+		const button1 = {
+			alignItems: 'center',
+			display: "table",
+			paddingVertical: 12,
+			width: 200,
+			paddingHorizontal: 14,
+			borderRadius: 10,
+			marginRight: 15,
+			backgroundColor: 'black',
+			float: 'left',
+			border: 'none',
+			marginRight: '0px'
 		}
 
 		return (
@@ -265,7 +291,28 @@ class Home extends Component {
 						</Button>
 					</div>
 
-					<CarList cars={data.drivers} />
+					<div className="car-list">
+						{data.drivers.map((car) => (
+							<div className="car-box">
+								<div className="car-image">
+									<img id="profilePic" src={car.imageSrc} onClick={() => this.redirectDriverProfile(car.id)} />
+								</div>
+								<div className="car-info">
+									<h2>{car.title}</h2>
+									<p>{car.matrícula}</p>
+									<p1>{car.carModel}</p1>
+								</div>
+								<div className="car-local">
+									<p> <strong className='bold'>Local de Partida:</strong> {car.localAtual}</p>
+									<div style={{ display: 'flex', flexDirection: 'row', justifyContent: "flex-end" }}>
+										<Button style={button1} onClick={() => this.redirectDriverProfile(car.id)}>
+											Visitar Perfil
+										</Button>
+									</div>
+								</div>
+							</div>
+						))}
+					</div>
 				</Container>
 			</div>
 		)
