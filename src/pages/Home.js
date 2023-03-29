@@ -7,7 +7,6 @@ import { Icon } from "leaflet";
 import randomLocation from 'random-location'
 import axios from 'axios';
 import data from "./data/drivers.json"
-import CarList from "../components/CarBoxes/CarList.js"
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import { Container, Row } from "reactstrap";
@@ -130,11 +129,24 @@ class Home extends Component {
 
 	// TODO
 	startTravel = () => {
-		console.log("started travel...")
+		var payload = { "points": [] }
 
-		// Call the CloserGeographicallyPointsAPI
-		// Get the return values
-		// ...
+		// Create the paylod to the API call
+		data.drivers.forEach((driver, index) => {
+			var dict = {}
+			dict["latitude"] = driver.latitude
+			dict["longitude"] = driver.longitude
+
+			payload["points"].push(dict)
+		})
+
+		axios.post("http://localhost:8040/points/v1/inside-points?latitude=" + this.state.passenger[0] + "&longitude="
+			+ this.state.passenger[1] + "&range=1", payload
+		)
+			.then((response) => {
+				console.log(response.data)
+			})
+
 
 		// Call the MatchingAPI (Need to add the driver's questions answers to the drivers.json file)
 		// Get the return value/(s)
