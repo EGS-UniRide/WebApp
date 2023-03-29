@@ -1,18 +1,79 @@
-.profile {
-    background-color: #4CAF50;
+.historyTrips {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    width: 500px;
+    height: 350px;
+    transition: 0.3s;
+    border: 2px solid #e7e7e7;
+    border-radius: 4px;
+    padding: 2rem;
+    background-color: #ffffffde;
+    margin: 1rem;
     display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    gap: 3rem;
-    border-radius: 30px;
-    margin-top: 50px;
-    width: 700px !important;
-    height: 800px;
-    margin: 0 auto;
+    flex-direction: column;
+    border: 2px solid #e7e7e7;
+    order: 1;
+    justify-self: start;
+  }
+  
+  .historyPayments {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    width: 500px;
+    height: 350px;
+    transition: 0.3s;
+    border: 30px solid #e7e7e7;
+    border-radius: 4px;
+    padding: 2rem;
+    background-color: #ffffffde;
+    margin: 0px;
+    display: flex;
+    flex-direction: column;
+    border: 2px solid #e7e7e7;
+    order: 2;
+  }
+  
+  .trip-history-container {
+    overflow: scroll;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-gap: 2px;
+    background-color: #fbc590;
+    padding: 4px;
+  }
+
+  .historyCard {
+    overflow: scroll;
+  }
+
+  .historyPayment {
+    overflow: scroll;
+  }
+  
+  .payment-history-container {
+    overflow: scroll;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-gap: 2px;
+    background-color: #fbc590;
+    padding: 4px;
+  }
+  
+  .profile {
+    background-color: #4CAF50;
+    display: grid;
+    grid-template-columns: 1fr 1fr 500px;
+    grid-auto-rows: auto;
+    column-gap: 2rem;
+    row-gap: 3rem;
+    left: 20vh;
+    position: relative;
+    perspective: 1000px;
+    border-radius: 10px;
+    padding: 15px;
     margin-top: 20px;
-    
-}
+    width: 1300px;
+    height: 810px;
+  }
+  
 
 .card {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
@@ -20,13 +81,29 @@
     height: 760px;
     transition: 0.3s;
     border: 2px solid #e7e7e7;
-    border-radius: 4px;
-    padding: 2rem;
+    border-radius: 10px;
+    padding: 0rem;
+    background-color: black;
+    margin: 1rem;
+    display: flex;
+    justify-content: bottom;
+    flex-direction: column;
+    align-items: center;
+}
+
+.cardOtherSide {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    width: 650px;
+    height: 760px;
+    transition: 0.3s;
+    border: 2px solid #e7e7e7;
+    border-radius: 10px;
+    padding: 0rem;
     background-color: #ffffff;
     margin: 1rem;
     display: flex;
+    justify-content: top;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
 }
 

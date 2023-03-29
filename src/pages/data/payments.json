@@ -1,0 +1,10 @@
+{
+    "payments": [
+        {
+            "driver": "João Silva","date": "2022-03-01","price": 25.0
+        },
+        {
+            "driver": "João Silva","date": "2022-03-01","price": 25.0
+        }
+    ]
+}

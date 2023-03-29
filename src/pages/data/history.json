@@ -1,7 +1,10 @@
 {
     "history": [
-    { "driver": "John Smith", "time": "9:00 AM", "place": "San Francisco, CA" },
-    { "driver": "Jane Doe", "time": "2:00 PM", "place": "Los Angeles, CA" },
-    { "driver": "Bob Johnson", "time": "7:00 PM", "place": "Las Vegas, NV" }
+        {
+            "driver": "João Silva", "passenger":  "Inês Moreira","date": "2022-03-01","price": 25.0
+        },
+        {
+            "driver": "João Silva", "passenger":  "Inês Moreira","date": "2022-03-01","price": 25.0
+        }
     ]
-    }
+}

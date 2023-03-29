@@ -1,6 +1,9 @@
 import React from "react";
 import "./User.css"
-
+import TripHistoryBox from "../../../pages/TripHistory";
+import PaymentHistoryBox from "../../../pages/payments/PaymentHistory";
+import data from "../../../pages/data/history.json"
+import dataForPayment from "../../../pages/data/payments.json"
 
 class UserProfilePage extends React.Component {
   state = {
@@ -210,6 +213,15 @@ class UserProfilePage extends React.Component {
                 </div>
               </div>
             </div>
+            <div className="cardOtherSide" >
+               <div className="historyTrips">
+                  <TripHistoryBox trips={data.history} />
+              </div>
+              <div className="historyPayments">
+                  <PaymentHistoryBox pays={dataForPayment.payments} />
+              </div> 
+            </div>
+           
           </div>
         </>
       );
