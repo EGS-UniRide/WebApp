@@ -129,29 +129,152 @@ class Home extends Component {
 
 	// TODO
 	startTravel = () => {
-		var payload = { "points": [] }
+		// Debug all the checkboxes
+		var checksNums = 0
+		var a1, a2, a3;
 
-		// Create the paylod to the API call
-		data.drivers.forEach((driver, index) => {
-			var dict = {}
-			dict["latitude"] = driver.latitude
-			dict["longitude"] = driver.longitude
+		if (document.getElementById("sim-animal").checked == true) {
+			a1 = "sim"
+			checksNums++;
+		}
+		if (document.getElementById("nao-animal").checked == true) {
+			a1 = "não"
+			checksNums++;
+		}
+		if (document.getElementById("sim-crianca").checked == true) {
+			a2 = "sim"
+			checksNums++;
+		}
+		if (document.getElementById("nao-crianca").checked == true) {
+			a2 = "não"
+			checksNums++;
+		}
+		if (document.getElementById("sim-bagagem").checked == true) {
+			a3 = "sim"
+			checksNums++;
+		}
+		if (document.getElementById("nao-bagagem").checked == true) {
+			a3 = "não"
+			checksNums++;
+		}
 
-			payload["points"].push(dict)
-		})
+		// Check if all the required checkboxes are checked
+		if (checksNums !== 3) {
+			swal("Respostas Inválidas!", "É necessário responder a todas as questões colocadas!", "error");
+		} else {
+			// Prepare the payload for the MatchingAPI
+			var matchPayload = {
+				"objects": {
+					"a1": a1,
+					"a2": a2,
+					"a3": a3
+				},
+				"list": []
+			}
 
-		axios.post("http://localhost:8040/points/v1/inside-points?latitude=" + this.state.passenger[0] + "&longitude="
-			+ this.state.passenger[1] + "&range=1", payload
-		)
-			.then((response) => {
-				console.log(response.data)
+			data.drivers.forEach((driver, index) => {
+				var dict = {}
+				dict["a1"] = driver.questions[0]["a1"]
+				dict["a2"] = driver.questions[0]["a2"]
+				dict["a3"] = driver.questions[0]["a3"]
+
+				matchPayload["list"].push(dict)
 			})
 
+			// console.log(JSON.stringify(matchPayload))
+			// console.log(matchPayload)
 
-		// Call the MatchingAPI (Need to add the driver's questions answers to the drivers.json file)
-		// Get the return value/(s)
-		// If the result is not unique, select one randomly
-		// ...
+			// Call the MatchingAPI
+			axios.post("http://127.0.0.1:8030/objects/v1/match", matchPayload)
+				.then((response) => {
+					// The var that will store the result of the Matching API call
+					var matchedDriversID = []
+					response.data.forEach((result, index) => {
+						data.drivers.forEach((driver, index) => {
+							if (result["a1"] == driver.questions[0]["a1"] && result["a2"] == driver.questions[0]["a2"] &&
+								result["a3"] == driver.questions[0]["a3"]) {
+
+								// console.log(driver.id)
+								// console.log(matchedDriversID.includes(driver.id))
+
+								if (!matchedDriversID.includes(driver.id)) {
+									matchedDriversID.push(driver.id)
+								}
+							}
+						})
+					})
+
+					// console.log(matchedDriversID)
+					// console.log(data)
+
+					// Prepare the payload for the Closer Geographically points API
+					var pointsPayload = { "points": [] }
+
+					matchedDriversID.forEach((driverMatch, index) => {
+						data.drivers.forEach((driver, index) => {
+							if (driver.id === driverMatch) {
+								var dict = {}
+								dict["latitude"] = driver.latitude
+								dict["longitude"] = driver.longitude
+								pointsPayload["points"].push(dict)
+							}
+						})
+					})
+
+					// Make the request for the Closer Geographically Points API
+					// console.log(pointsPayload)
+					axios.post("http://localhost:8040/points/v1/inside-points?latitude=" + this.state.passenger[0] +
+						"&longitude=" + this.state.passenger[1] + "&range=1", pointsPayload
+					)
+						.then((response) => {
+							// console.log(response.data)
+
+							// console.log(response.data.length)
+							if (response.data.length === 0) {
+								axios.post("http://localhost:8040/points/v1/inside-points?latitude=" + this.state.passenger[0] +
+									"&longitude=" + this.state.passenger[1] + "&range=2", pointsPayload
+								)
+									.then((response) => {
+										var randomIndex = Math.floor(Math.random() * response.data.length)
+										console.log(response.data[randomIndex])
+
+										data.drivers.forEach((driver, index) => {
+											if (response.data[randomIndex]["latitude"] === driver.latitude &&
+												response.data[randomIndex]["longitude"] === driver.longitude) {
+												console.log(driver.id)
+												// TODO -> redirect to payment page
+											}
+										})
+									})
+							}
+							else if (response.data.length > 1) {
+								var randomIndex = Math.floor(Math.random() * response.data.length)
+								console.log(response.data[randomIndex])
+
+								data.drivers.forEach((driver, index) => {
+									if (response.data[randomIndex]["latitude"] === driver.latitude &&
+										response.data[randomIndex]["longitude"] === driver.longitude) {
+										// TODO -> redirect to payment page
+										console.log(driver.id)
+									}
+								})
+
+							}
+							else {
+								var randomIndex = Math.floor(Math.random() * response.data.length)
+								console.log(response.data[randomIndex])
+
+								data.drivers.forEach((driver, index) => {
+									if (response.data[randomIndex]["latitude"] === driver.latitude &&
+										response.data[randomIndex]["longitude"] === driver.longitude) {
+										// TODO -> redirect to payment page
+										console.log(driver.id)
+									}
+								})
+							}
+						})
+				})
+		}
 	}
 
 	// To redirect to the driver profile

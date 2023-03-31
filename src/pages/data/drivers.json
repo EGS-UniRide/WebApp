@@ -7,7 +7,14 @@
             "phone": "937123123",
             "imageSrc": "https://cdn-icons-png.flaticon.com/512/5231/5231020.png",
             "matrícula": "40-RF-61",
-            "carModel": "Fiat Pulse"
+            "carModel": "Fiat Pulse",
+            "questions": [
+                {
+                    "a1": "sim",
+                    "a2": "sim",
+                    "a3": "sim"
+                }
+            ]
         },
         {
             "id": 2,
@@ -16,7 +23,14 @@
             "phone": "937123123",
             "imageSrc": "https://cdn-icons-png.flaticon.com/512/5231/5231019.png",
             "matrícula": "50-AA-78",
-            "carModel": "Seat Ibiza FR"
+            "carModel": "Seat Ibiza FR",
+            "questions": [
+                {
+                    "a1": "não",
+                    "a2": "não",
+                    "a3": "não"
+                }
+            ]
         },
         {
             "id": 3,
@@ -25,7 +39,14 @@
             "phone": "937123123",
             "imageSrc": "https://cdn-icons-png.flaticon.com/512/5231/5231020.png",
             "matrícula": "32-XU-02",
-            "carModel": "Renault Megane"
+            "carModel": "Renault Megane",
+            "questions": [
+                {
+                    "a1": "sim",
+                    "a2": "não",
+                    "a3": "não"
+                }
+            ]
         },
         {
             "id": 4,
@@ -34,7 +55,14 @@
             "phone": "937123123",
             "imageSrc": "https://cdn-icons-png.flaticon.com/512/5231/5231019.png",
             "matrícula": "10-AR-23",
-            "carModel": "Toyota Corolla"
+            "carModel": "Toyota Corolla",
+            "questions": [
+                {
+                    "a1": "não",
+                    "a2": "sim",
+                    "a3": "não"
+                }
+            ]
         },
         {
             "id": 5,
@@ -43,7 +71,14 @@
             "phone": "937123123",
             "imageSrc": "https://cdn-icons-png.flaticon.com/512/5231/5231020.png",
             "matrícula": "91-SE-58",
-            "carModel": "Nissan Leaf"
+            "carModel": "Nissan Leaf",
+            "questions": [
+                {
+                    "a1": "não",
+                    "a2": "não",
+                    "a3": "sim"
+                }
+            ]
         },
         {
             "id": 6,
@@ -52,7 +87,14 @@
             "phone": "937123123",
             "imageSrc": "https://cdn-icons-png.flaticon.com/512/5231/5231020.png",
             "matrícula": "12-HP-04",
-            "carModel": "Audi A1"
+            "carModel": "Audi A1",
+            "questions": [
+                {
+                    "a1": "sim",
+                    "a2": "sim",
+                    "a3": "não"
+                }
+            ]
         },
         {
             "id": 7,
@@ -61,7 +103,14 @@
             "phone": "937123123",
             "imageSrc": "https://cdn-icons-png.flaticon.com/512/5231/5231019.png",
             "matrícula": "19-TI-33",
-            "carModel": "Volvo V40"
+            "carModel": "Volvo V40",
+            "questions": [
+                {
+                    "a1": "não",
+                    "a2": "sim",
+                    "a3": "sim"
+                }
+            ]
         },
         {
             "id": 8,
@@ -70,7 +119,14 @@
             "phone": "937123123",
             "imageSrc": "https://cdn-icons-png.flaticon.com/512/5231/5231019.png",
             "matrícula": "88-NJ-02",
-            "carModel": "Mercedes-Benz A 45"
+            "carModel": "Mercedes-Benz A 45",
+            "questions": [
+                {
+                    "a1": "sim",
+                    "a2": "não",
+                    "a3": "sim"
+                }
+            ]
         },
         {
             "id": 9,
@@ -79,7 +135,14 @@
             "phone": "937123123",
             "imageSrc": "https://cdn-icons-png.flaticon.com/512/5231/5231020.png",
             "matrícula": "22-QO-43",
-            "carModel": "Opel Astra"
+            "carModel": "Opel Astra",
+            "questions": [
+                {
+                    "a1": "não",
+                    "a2": "não",
+                    "a3": "sim"
+                }
+            ]
         },
         {
             "id": 10,
@@ -88,7 +151,14 @@
             "phone": "937123123",
             "imageSrc": "https://cdn-icons-png.flaticon.com/512/5231/5231019.png",
             "matrícula": "10-FF-77",
-            "carModel": "Volkswagen Golf"
+            "carModel": "Volkswagen Golf",
+            "questions": [
+                {
+                    "a1": "não",
+                    "a2": "sim",
+                    "a3": "não"
+                }
+            ]
         }
     ]
 }
