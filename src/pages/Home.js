@@ -11,6 +11,7 @@ import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import { Container, Row } from "reactstrap";
 import swal from 'sweetalert';
+import Alert from 'react-bootstrap/Alert';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../components/CarBoxes/cars.css';
 import '../components/CarBoxes/cars.js';
@@ -22,6 +23,8 @@ class Home extends Component {
 		this.state = {
 			passenger: [],
 			show: false,
+			showSuccess: false,
+			showFailed: false
 		}
 	}
 
@@ -236,39 +239,136 @@ class Home extends Component {
 								)
 									.then((response) => {
 										var randomIndex = Math.floor(Math.random() * response.data.length)
-										console.log(response.data[randomIndex])
+										// console.log(response.data[randomIndex])
 
 										data.drivers.forEach((driver, index) => {
 											if (response.data[randomIndex]["latitude"] === driver.latitude &&
 												response.data[randomIndex]["longitude"] === driver.longitude) {
-												console.log(driver.id)
-												// TODO -> redirect to payment page
+												// console.log(driver.id)
+
+												var payerid = Math.floor((Math.random() * 1000) + 1);
+
+												axios.post("http://127.0.0.1:8000/v2/payments/bill", {
+													"payerid": payerid,
+													"receiverid": driver.id,
+													"paydate": new Date(Date.now())
+												}).then((response) => {
+
+													if (response["status"] === 200) {
+														this.setState({
+															show: false,
+															showSuccess: true
+														})
+
+														setTimeout(() => {
+															this.setState({
+																showSuccess: false
+															})
+														}, 3000)
+													}
+													else {
+														this.setState({
+															show: false,
+															showFailed: true
+														})
+
+														setTimeout(() => {
+															this.setState({
+																showFailed: false
+															})
+														}, 3000)
+													}
+												})
 											}
 										})
 									})
 							}
 							else if (response.data.length > 1) {
 								var randomIndex = Math.floor(Math.random() * response.data.length)
-								console.log(response.data[randomIndex])
+								// console.log(response.data[randomIndex])
 
 								data.drivers.forEach((driver, index) => {
 									if (response.data[randomIndex]["latitude"] === driver.latitude &&
 										response.data[randomIndex]["longitude"] === driver.longitude) {
-										// TODO -> redirect to payment page
-										console.log(driver.id)
+										// console.log(driver.id)
+
+										var payerid = Math.floor((Math.random() * 1000) + 1);
+
+										axios.post("http://127.0.0.1:8000/v2/payments/bill", {
+											"payerid": payerid,
+											"receiverid": driver.id,
+											"paydate": new Date(Date.now())
+										}).then((response) => {
+											if (response["status"] === 200) {
+												this.setState({
+													show: false,
+													showSuccess: true
+												})
+
+												setTimeout(() => {
+													this.setState({
+														showSuccess: false
+													})
+												}, 3000)
+											}
+											else {
+												this.setState({
+													show: false,
+													showFailed: true
+												})
+
+												setTimeout(() => {
+													this.setState({
+														showFailed: false
+													})
+												}, 3000)
+											}
+										})
 									}
 								})
 
 							}
 							else {
 								var randomIndex = Math.floor(Math.random() * response.data.length)
-								console.log(response.data[randomIndex])
+								// console.log(response.data[randomIndex])
 
 								data.drivers.forEach((driver, index) => {
 									if (response.data[randomIndex]["latitude"] === driver.latitude &&
 										response.data[randomIndex]["longitude"] === driver.longitude) {
-										// TODO -> redirect to payment page
-										console.log(driver.id)
+										// console.log(driver.id)
+
+										var payerid = Math.floor((Math.random() * 1000) + 1);
+
+										axios.post("http://127.0.0.1:8000/v2/payments/bill", {
+											"payerid": payerid,
+											"receiverid": driver.id,
+											"paydate": new Date(Date.now())
+										}).then((response) => {
+											if (response["status"] === 200) {
+												this.setState({
+													show: false,
+													showSuccess: true
+												})
+
+												setTimeout(() => {
+													this.setState({
+														showSuccess: false
+													})
+												}, 3000)
+											}
+											else {
+												this.setState({
+													show: false,
+													showFailed: true
+												})
+
+												setTimeout(() => {
+													this.setState({
+														showFailed: false
+													})
+												}, 3000)
+											}
+										})
 									}
 								})
 							}
@@ -291,6 +391,8 @@ class Home extends Component {
 		var show = this.state.show
 		var passenger = this.state.passenger
 		var center = [40.633024, -8.657777]
+		var showSuccess = this.state.showSuccess
+		var showFailed = this.state.showFailed
 
 		var carIcon = new Icon({
 			iconUrl: 'https://cdn.pixabay.com/photo/2022/06/06/14/39/marker-7246182_960_720.png',
@@ -330,6 +432,26 @@ class Home extends Component {
 
 		return (
 			<div style={{ backgroundColor: "#addbd0", paddingRight: '0px' }}>
+				<div style={{ position: "absolute" }}>
+					<Alert show={showSuccess} key="success" variant="success"
+						style={{
+							position: "relative", top: "20px", width: "335px", left: "402%", zIndex: "2",
+							fontSize: "18px", fontWeight: "bold"
+						}}>
+						Payment was successfully realized!
+					</Alert>
+				</div>
+
+				<div style={{ position: "absolute" }}>
+					<Alert show={showFailed} key="danger" variant="danger"
+						style={{
+							position: "relative", top: "20px", width: "335px", left: "402%", zIndex: "2",
+							fontSize: "18px", fontWeight: "bold"
+						}}>
+						Payment failed!
+					</Alert>
+				</div>
+
 				<Modal show={show} onHide={this.handleClose} dialogClassName="custom-dialog" id="iniciar-viagem">
 					<Modal.Header closeButton style={{
 						paddingTop: '1%', paddingBottom: '1%', textAlign: 'center', border: 'none',
@@ -388,7 +510,7 @@ class Home extends Component {
 				</Modal>
 
 				<Container fluid style={{ paddingLeft: '0px', paddingRight: '0px' }}>
-					<MapContainer center={center} zoom={16} scrollWheelZoom={true}>
+					<MapContainer center={center} zoom={16} scrollWheelZoom={true} style={{ zIndex: "1" }}>
 						<ChangeView center={center} zoom={16} />
 						<TileLayer
 							attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
