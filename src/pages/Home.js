@@ -235,7 +235,7 @@ class Home extends Component {
 							// console.log(response.data.length)
 							if (response.data.length === 0) {
 								axios.post("http://localhost:8040/points/v1/inside-points?latitude=" + this.state.passenger[0] +
-									"&longitude=" + this.state.passenger[1] + "&range=2", pointsPayload
+									"&longitude=" + this.state.passenger[1] + "&range=5", pointsPayload
 								)
 									.then((response) => {
 										var randomIndex = Math.floor(Math.random() * response.data.length)
@@ -253,8 +253,15 @@ class Home extends Component {
 													"receiverid": driver.id,
 													"paydate": new Date(Date.now())
 												}).then((response) => {
-
 													if (response["status"] === 200) {
+
+														// TODO -> change data from body request
+														axios.post("http://127.0.0.1:8010/v2/email", {
+															"address": "tahd99@gmail.com",
+															"subject": "UniRide Payments",
+															"description": "You owe 3.20eur for your last ride"
+														})
+
 														this.setState({
 															show: false,
 															showSuccess: true
@@ -300,6 +307,14 @@ class Home extends Component {
 											"paydate": new Date(Date.now())
 										}).then((response) => {
 											if (response["status"] === 200) {
+
+												// TODO -> change data from body request
+												axios.post("http://127.0.0.1:8010/v2/email", {
+													"address": "tahd99@gmail.com",
+													"subject": "UniRide Payments",
+													"description": "You owe 3.20eur for your last ride"
+												})
+
 												this.setState({
 													show: false,
 													showSuccess: true
@@ -345,6 +360,14 @@ class Home extends Component {
 											"paydate": new Date(Date.now())
 										}).then((response) => {
 											if (response["status"] === 200) {
+
+												// TODO -> change data from body request
+												axios.post("http://127.0.0.1:8010/v2/email", {
+													"address": "tahd99@gmail.com",
+													"subject": "UniRide Payments",
+													"description": "You owe 3.20eur for your last ride"
+												})
+
 												this.setState({
 													show: false,
 													showSuccess: true
