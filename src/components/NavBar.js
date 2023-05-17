@@ -15,11 +15,7 @@ export default function NavBar({ setShow, size }) {
 			</div>
 
 			<div className="nav__menu">
-				<li className="nav__item">
-					<a href="/history" className="nav__link">
-						Histórico de viagens
-					</a>
-				</li>
+			
 				<li className="nav_item2">
 					<a href="/userProfile" className="nav__link1">
 						A minha conta

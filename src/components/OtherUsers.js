@@ -2,29 +2,33 @@ import React from "react";
 import ChatComponent from "../components/ChatComponent/ChatComponent.js";
 import UserProfilePage from "./UserProfilePage.css";
 import data from "../pages/data/drivers.json";
-import { useParams } from "react-router-dom";
+import queryString from 'query-string';
+import { useLocation, useNavigate, useParams } from 'react-router-dom';
 
 class OtherUsers extends React.Component {
-	state = {
-		classNames: "",
-		name: "",
-		email: "",
-		phone: ""
-	};
+	constructor(props) {
+		super(props);
+		this.state = {
+		  name: '',
+		  email: '',
+		  phone: '',
+		  imageSrc: ''
+		};
+	  }
 
-	componentDidMount() {
-		/* const { match } = this.props;
-		const driverId = match.params.id; */
-
+	componentDidMount() { 
+		var id = this.props.location.search.split("=")[1]
+        console.log(id)
 		// Extract the driver's information based on the ID passed as a prop
-		const driver = data.drivers.find((driver) => driver.id === 2);
+		const driver = data.drivers.find((driver) => driver.id === parseInt(id));
+
 
 		// Update the component state with the driver's information
 		this.setState({
-			name: driver.title,
-			email: driver.email,
-			phone: driver.phone,
-			imageSrc: driver.imageSrc,
+		name: driver.title,
+		email: driver.email,
+		phone: driver.phone,
+		imageSrc: driver.imageSrc
 		});
 	}
 
@@ -86,4 +90,14 @@ class OtherUsers extends React.Component {
 		);
 	}
 }
-export default OtherUsers;
+function withRouter(Component) {
+    function ComponentWithRouterProp(props) {
+       let location = useLocation();
+       let navigate = useNavigate();
+       let params = useParams();
+       return <Component {...props} {...{ location, navigate, params }} />;
+    }
+    return ComponentWithRouterProp;
+ }
+ 
+export default withRouter(OtherUsers);

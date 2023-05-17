@@ -1,0 +1,19 @@
+---
+apiVersion: apps/v1
+metadata: 
+  name: react
+  namespace: egs-uniride
+spec:
+  selector:
+    matchLabels:
+      app: react
+    template:
+      metadata:
+        labels:
+          app: react
+      spec:
+        containers:
+          - name: react
+            image: registry.deti:5000/egs-uniride/webapp:1
+            ports:
+              - containerPort: 3000
