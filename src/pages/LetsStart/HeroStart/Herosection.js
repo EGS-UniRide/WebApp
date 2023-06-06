@@ -50,35 +50,33 @@ const button1 = {
   }
 
 
-
 const Herosection = () => {
 
- 
 
   return (
     <div className="home" >
       <div className="headerContainer">
         <h1> UniRide </h1>
         <p> Expand your network, make new friends and share a ride. </p>
-        <p className= "a"> Help yourself saving, or gaining, some money.
-        AAAAAAAAAAAAAAAAAAAAAAaa </p>
+        <p className= "a"> Help yourself saving, or gaining, some money.</p>
         <div className="buttom">
             <Link to="/LogSign" style={button1}>
-              <div id="g_id_onload"
+              <a style={text}>Sign in</a>
+              {/* <div id="g_id_onload"
                   data-client_id="782166404546-fcq3gu48l2a3q5fvqhrktq853m112s1h.apps.googleusercontent.com"
                   data-context="signin"
                   data-login_uri="http://127.0.0.1:1337/"
                   data-itp_support="true">
-              </div> 
+              </div>  */}
             </Link> 
-            {/*<Link to="/SignUp" style={button2}>
+            <Link to="/SignUp" style={button2}>
                 <a style={text2}>Sign up</a>
-            </Link>*/}
+            </Link>
         </div>
         
       </div>
       <div className="column">
-          <img src={BannerImage} width="500" height="500"></img>
+          <img src={BannerImage} width="600" height="600" style={{marginTop:"50px"}}></img>
       </div>
 
     </div>

@@ -18,7 +18,7 @@ export const AuthProvider = ({ children }) => {
     }
   }, []);
 
-  const signin = (email, password) => {
+  function signin(email, password) {
     let usersStorage = localStorage.getItem("users_bd") ? JSON.parse(localStorage.getItem("users_bd")) : [];
 
     const hasUser = usersStorage != null ? usersStorage.filter((user) => user.email === email) : null;
@@ -39,25 +39,25 @@ export const AuthProvider = ({ children }) => {
 
   const signup = (email, password) => {
     const usersStorage = JSON.parse(localStorage.getItem("users_bd"));
-
+  
     const hasUser = usersStorage != null ? usersStorage.filter((user) => user.email === email) : null;
-
+  
     if (hasUser != null ? hasUser.length : false) {
       return "Já tem uma conta com esse E-mail";
     }
-
+  
     let newUser;
-
+  
     if (usersStorage) {
       newUser = [...usersStorage, { email, password }];
     } else {
       newUser = [{ email, password }];
     }
-
+  
     localStorage.setItem("users_bd", JSON.stringify(newUser));
-
-    return;
-  };
+  
+    return signup; // Return the signup function itself instead of empty string
+  };  
 
   const signout = () => {
     setUser(null);

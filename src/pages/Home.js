@@ -188,7 +188,7 @@ class Home extends Component {
 			// console.log(matchPayload)
 
 			// Call the MatchingAPI
-			axios.post("http://127.0.0.1:8030/objects/v1/match", matchPayload)
+			axios.post("http://matching-api:8030/objects/v1/match", matchPayload)
 				.then((response) => {
 					// The var that will store the result of the Matching API call
 					var matchedDriversID = []
@@ -226,7 +226,7 @@ class Home extends Component {
 
 					// Make the request for the Closer Geographically Points API
 					// console.log(pointsPayload)
-					axios.post("http://localhost:8040/points/v1/inside-points?latitude=" + this.state.passenger[0] +
+					axios.post("http://closer-geo-point-api:8040/points/v1/inside-points?latitude=" + this.state.passenger[0] +
 						"&longitude=" + this.state.passenger[1] + "&range=1", pointsPayload
 					)
 						.then((response) => {
@@ -234,7 +234,7 @@ class Home extends Component {
 
 							// console.log(response.data.length)
 							if (response.data.length === 0) {
-								axios.post("http://localhost:8040/points/v1/inside-points?latitude=" + this.state.passenger[0] +
+								axios.post("http://closer-geo-point-api:8040/points/v1/inside-points?latitude=" + this.state.passenger[0] +
 									"&longitude=" + this.state.passenger[1] + "&range=5", pointsPayload
 								)
 									.then((response) => {
@@ -256,7 +256,7 @@ class Home extends Component {
 													if (response["status"] === 200) {
 
 														// TODO -> change data from body request
-														axios.post("http://127.0.0.1:8010/v2/email", {
+														axios.post("http://notificationsapi-svc:8010/v2/email", {
 															"address": "tahd99@gmail.com",
 															"subject": "UniRide Payments",
 															"description": "You owe 3.20eur for your last ride"
@@ -309,7 +309,7 @@ class Home extends Component {
 											if (response["status"] === 200) {
 
 												// TODO -> change data from body request
-												axios.post("http://127.0.0.1:8010/v2/email", {
+												axios.post("http://notificationsapi-svc:8010/v2/email", {
 													"address": "tahd99@gmail.com",
 													"subject": "UniRide Payments",
 													"description": "You owe 3.20eur for your last ride"
@@ -362,7 +362,7 @@ class Home extends Component {
 											if (response["status"] === 200) {
 
 												// TODO -> change data from body request
-												axios.post("http://127.0.0.1:8010/v2/email", {
+												axios.post("http://notificationsapi-svc:8010/v2/email", {
 													"address": "tahd99@gmail.com",
 													"subject": "UniRide Payments",
 													"description": "You owe 3.20eur for your last ride"
@@ -398,6 +398,16 @@ class Home extends Component {
 						})
 				})
 		}
+	}
+
+
+	test = () => {
+		
+			// Call the MatchingAPI
+			axios.get("http://paymentsapi-svc:8000/v2/payments/bills")
+			.then(response => {
+				console.log(response.data)
+			})
 	}
 
 	// To redirect to the driver profile
@@ -527,6 +537,10 @@ class Home extends Component {
 							<Button variant="primary" onClick={this.startTravel}
 								style={{ backgroundColor: '#fcc186', border: 'none', width: '130px', color: 'black' }}>
 								Iniciar viagem
+							</Button>
+							<Button variant="primary" onClick={this.test}
+								style={{ backgroundColor: '#fcc186', border: 'none', width: '130px', color: 'black' }}>
+								Qualquer coisa
 							</Button>
 						</div>
 					</Modal.Footer>

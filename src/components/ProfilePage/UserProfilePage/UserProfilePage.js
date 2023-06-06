@@ -1,6 +1,6 @@
 import React from "react";
 import "./User.css"
-import TripHistoryBox from "../../../pages/TripHistory";
+import TripHistoryBox from "../../../pages/tripsHistory/TripHistory";
 import PaymentHistoryBox from "../../../pages/payments/PaymentHistory";
 import data from "../../../pages/data/history.json"
 import dataForPayment from "../../../pages/data/payments.json"

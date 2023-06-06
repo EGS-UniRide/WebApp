@@ -1,28 +1,30 @@
-import React, { useState } from "react";
+import React, { useState, createContext } from "react";
 import Input from "../Input";
 import Button from "../Button"
 import * as C from "./styles";
 import { Link, useNavigate } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 import Logo from "../Logo.js";
+import HeroSign from "../HeroSignUp/HeroSign";
 
-const HeroLogin = (props) => {
-  const { addtrip } = useAuth();
+export const AuthContext = createContext({});
+
+const HeroLogin = () => {
+  // const { signin } = useAuth();
   const navigate = useNavigate();
 
-  const [matricula, setMatricula] = useState("");
-  const [nomeMotorista, setMotorista] = useState("");
-  const [carModel, setModel] = useState("");
-  const [localRecolha, setRecolha] = useState("");
+  const [email, setEmail] = useState("");
+  const [senha, setSenha] = useState("");
   const [error, setError] = useState("");
-
+  const [user, setUser] = useState();
+  
   const handleLogin = () => {
-    if (!matricula | !nomeMotorista |!localRecolha |!carModel) {
+    if (!email | !senha) {
       setError("Preencha todos os campos");
       return;
     }
 
-    const res = addtrip(matricula, nomeMotorista, localRecolha, carModel, setError);
+    const res = signin(email, senha);
 
     if (res) {
       setError(res);
@@ -32,47 +34,59 @@ const HeroLogin = (props) => {
     navigate("/home");
   };
 
-  return (props.trigger) ? (
+  const signin = (email, password) => {
+    let usersStorage = localStorage.getItem("users_bd") ? JSON.parse(localStorage.getItem("users_bd")) : [];
+
+    const hasUser = usersStorage != null ? usersStorage.filter((user) => user.email === email) : null;
+
+    if (hasUser != null ? hasUser.length : false) {
+      if (hasUser[0].email === email && hasUser[0].password === password) {
+        const token = Math.random().toString(36).substring(2);
+        localStorage.setItem("user_token", JSON.stringify({ email, token }));
+        setUser({ email, password });
+        return "olá" % email;
+      } else {
+        return "E-mail ou senha incorretos";
+      }
+    } else {
+      return "Usuário não cadastrado";
+    }
+  };
+
+  return (
     <>
-    <Logo />
-    <Link className="logo flex-row" to={"/"}>
-            <Logo icon="icon-park-solid:love-and-help" color="black" width="24" height="24" />
-    </Link>
-    <C.Container>
-      <C.Label>Indique os dados da tua viagem</C.Label>
-      <C.Content>
-        <Input
-          type="nomeMotorista"
-          placeholder="Digite o seu nome"
-          value={nomeMotorista}
-          onChange={(e) => [setMotorista(e.target.value), setError("")]}
-        />
-        <Input
-          type="matricula"
-          placeholder="Digite a matrícula do veículo"
-          value={matricula}
-          onChange={(e) => [setMatricula(e.target.value), setError("")]}
-        />
-        <Input
-          type="carModel"
-          placeholder="Digite o modelo do veículo"
-          value={matricula}
-          onChange={(e) => [setModel(e.target.value), setError("")]}
-        />
-        <Input
-          type="localRecolha"
-          placeholder="Digite o local de Recolha"
-          value={matricula}
-          onChange={(e) => [setRecolha(e.target.value), setError("")]}
-        />
-        <C.labelError>{error}</C.labelError>
-        <Button Text="Adicionar" onClick={() => props.setTrigger(false)}/>
-        {props.children}
-      </C.Content>
-    </C.Container>
+      <Logo />
+      <Link className="logo flex-row" to={"/"}>
+        <Logo icon="icon-park-solid:love-and-help" color="black" width="24" height="24" />
+      </Link>
+      <C.Container>
+        <C.Label>LOGIN</C.Label>
+        <C.Content>
+          <Input
+            type="email"
+            placeholder="Digite seu E-mail"
+            value={email}
+            onChange={(e) => [setEmail(e.target.value), setError("")]}
+          />
+          <Input
+            type="password"
+            placeholder="Digite sua Senha"
+            value={senha}
+            onChange={(e) => [setSenha(e.target.value), setError("")]}
+          />
+          <C.labelError>{error}</C.labelError>
+          <Button Text="Entrar" onClick={handleLogin} />
+          <C.LabelSignup>
+            Não tem uma conta?
+            <C.Strong>
+              <Link to="/SignUp">&nbsp;Registre-se</Link>
+            </C.Strong>
+          </C.LabelSignup>
+        </C.Content>
+      </C.Container>
     </>
-  ): "";
-  
+  );
+
 };
 
 export default HeroLogin;

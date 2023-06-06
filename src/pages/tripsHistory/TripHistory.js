@@ -1,6 +1,6 @@
 import React from "react";
 import TripItem from "./trips";
-import "../components/ProfilePage/UserProfilePage/User.css";
+import "../../components/ProfilePage/UserProfilePage/User.css";
 
 const TripHistoryBox = ({ trips }) => {
   const sortedTrips = trips.slice().reverse();
